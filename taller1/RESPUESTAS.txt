@@ -1,19 +1,21 @@
 Ejercicio 1.
 
 a ¿Cuántos mutantes se generaron en total?
-	Se generaron 69 mutantes en total.
+	Se generaron 70 mutantes en total.
+
 b ¿Qué operador de mutación generó más mutantes? ¿Cuántos y por qué?
 c ¿Qué operador de mutación generó menos mutantes? ¿Cuántos y por qué?
 
+	No logramos encontrar dónde ver las respuestas para b. y c., porque el cuadro de JaCoCo no parece diferenciar los mutantes.
 
 Ejercicio 2.
 
 a ¿Cuántos mutantes vivos y muertos encontraron cada uno de los test suites?
-	Test suite 1: 17 muertos, 52 vivos
-	Test suite 2: 34 muertos, 35 vivos
+	Test suite 1: 18 muertos, 52 vivos
+	Test suite 2: 35 muertos, 35 vivos
 b ¿Cuál es el mutation score de cada test suite?
-	Test suite 1: 24%
-	Test suite 2: 49%
+	Test suite 1: 25%
+	Test suite 2: 50%
 
 
 Ejercicio 3
@@ -22,7 +24,7 @@ a ¿Cuál es el mutation score logrado para los tests de StackTests3?
 	Mutation score: 95%
 
 b ¿Cuántos mutantes vivos y muertos encontraron?
-	66 muertos y 3 vivos.
+	67 muertos y 3 vivos.
 
 c Comente cuáles son todos los mutantes vivos que quedaron y porqué son equivalentes al programa original (si no lo fueran, todavía es posible mejorar el mutation score).
 	1.  StackArMutated7281 (MathMutator: Se reemplazó * por / en la línea 65.)
@@ -38,7 +40,7 @@ c Comente cuáles son todos los mutantes vivos que quedaron y porqué son equiva
 d ¿Cuál es el instruction coverage promedio que lograron para las clases mutadas? Puede encontrar este valor al final del reporte de JaCoCo para el paquete org.autotest.mutants (la última fila da
 el Total).
 
-	El promedio resultó ser de 67%
+	El promedio resultó ser del 69%
 
 e ¿Cuál es el peor instruction coverage que lograron para una clase mutada? ¿Por qué creen que sucede esto?
 	
