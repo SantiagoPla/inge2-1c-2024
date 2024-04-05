@@ -1,0 +1,98 @@
+####TALLER 2: RANDOM TESTING. 
+
+1. Ejecutar Randoop sobre la clase StackAr para que genere todos los tests aleatorios posibles durante 15 segundos. Luego, responder: 
+	
+	i. ¿Cuántos casos de test produjo Randoop?
+	Randoop produjo 349 casos de tests que se pueden encontrar en src/test/java/org/autotest/ejercicio1.
+
+	ii. ¿Hay casos de test que fallan?
+	No, los 349 tests pasan.
+
+	iii. ¿Cuál es el instruction coverage alcanzado por los tests generados para la clase StackAr?
+	A partir del reporte generado por JaCoCo podemos observar que el instruction coverage alcanzado por los tests generados para la clase StackAr es de 83%.
+
+
+
+
+2. Completar el método repOK() de la clase StackAr para que retorne true solamente si la estructura del StackAR es válida. Tener en cuenta que el código de este método no debe tirar excepciones. Una instancia de StackAr es válida sii: 
+	
+	- elems != null
+	- -1 <= readIndex < elems.length
+	- elems[i] == null si i > readIndex 
+
+Luego, 
+
+	i. Ejecutar Randoop por 1min sobre StackAr y correr los tests generados. ¿Hay casos de test que fallan? ¿Cuántos?. Si hay tests que fallan, elegir 3 al azar, analizarlos y explicar por qué fallan. 
+	Randoop produjo 207 tests que fallan y 1748 tests de regresión. Los mismos se encuentran en src/test/java/org/autotest/ejercicio2_con_failing.
+	Veamos 3 tests que fallan: 
+
+	@Test
+    public void test001() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "ErrorTest0.test001");
+        org.autotest.StackAr stackAr1 = new org.autotest.StackAr((int) '4');
+        stackAr1.push((java.lang.Object) (-1L));
+        java.lang.Object obj4 = stackAr1.pop();
+        // Check representation invariant.
+        org.junit.Assert.assertTrue("Representation invariant failed: Check rep invariant (method repOK) for stackAr1", stackAr1.repOK());
+    }
+
+	@Test
+    public void test005() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "ErrorTest0.test005");
+        org.autotest.StackAr stackAr1 = new org.autotest.StackAr((int) 'a');
+        java.lang.String str2 = stackAr1.toString();
+        stackAr1.push((java.lang.Object) 0.0f);
+        boolean boolean6 = stackAr1.equals((java.lang.Object) (byte) -1);
+        java.lang.Object obj7 = stackAr1.pop();
+        // Check representation invariant.
+        org.junit.Assert.assertTrue("Representation invariant failed: Check rep invariant (method repOK) for stackAr1", stackAr1.repOK());
+    }
+
+	@Test
+    public void test011() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "ErrorTest0.test011");
+        org.autotest.StackAr stackAr1 = new org.autotest.StackAr((int) '4');
+        org.autotest.StackAr stackAr3 = new org.autotest.StackAr((int) (short) 1);
+        stackAr1.push((java.lang.Object) (short) 1);
+        java.lang.Object obj5 = stackAr1.pop();
+        // Check representation invariant.
+        org.junit.Assert.assertTrue("Representation invariant failed: Check rep invariant (method repOK) for stackAr1", stackAr1.repOK());
+    }
+
+	En los tres casos se crea un stack y, entre otras cosas, se pushea un elemento y luego se popea. Al chequear el invariante de representación, el mismo retorna false. 
+	Por cómo está implementado StackAr no parece que el invariante se rompa con las condiciones de elems != null o -1 <= readIndex < elems.length, si no que al hacer 
+	pop() no se setea como null el anterior tope del stack, lo que hace que no se cumpla la tercer condición del invariante. 
+
+	
+
+	ii. Si hay casos de test que fallan, reparar el programa StackAr hasta que Randoop no reporte más failing tests usando un minuto de presupuesto. 
+	Basta cambiar la implementación de pop() de la siguiente manera: 
+	
+	public Object pop() throws IllegalStateException {
+		if (isEmpty()) {
+			throw new IllegalStateException();
+		}
+		Object rv = this.top();
+		elems[readIndex] = null;
+		readIndex--;
+		return rv;
+	}
+
+	Al ejecutar Randoop sobre esta nueva versión se produjeron 1858 tests, de los cuales todos pasan. Se encuentran en src/test/java/org/autotest/ejercicio2.
+	
+	
+
+	iii. Reportar el instruction coverage alcanzado por los últimos casos de tests generados por Randoop para la clase StackAr. 
+	Para estos últimos tests el instruction coverage es del 72%. (src/test/java/org/autotest/ejercicio2)
+
+
+	
+3. Ejecutar Pitest sobre el último test suite generado por Randoop. Responder: 
+
+	i. ¿Cuántos mutantes construye Pitest?¿Cuál es el mutation score?
+	ii. Extender manualmente el test suite para obtener el mejor mutation score posible con Pitest. ¿Cuál es el mejor mutation score que pudo obtener? Si hubiera mutantes equivalentes, explique cuáles son y justifique por qué son equivalentes. 
+
+
