@@ -28,6 +28,7 @@ public class NullReturnsMutator extends MutationOperator {
         return targetTypes.contains(type);
     }
 
+
     @Override
     public void process(CtElement candidate) {
         CtReturn op = (CtReturn)candidate;

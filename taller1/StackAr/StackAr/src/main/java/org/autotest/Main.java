@@ -3,9 +3,7 @@ package org.autotest;
 import org.autotest.operators.MutationOperator;
 import org.reflections.Reflections;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Clase principal del programa.
@@ -29,9 +27,22 @@ public class Main {
 
             // Escribimos los mutantes generados a disco.
             Mutant.cleanMutantsInFolder("src/main/java/");
+
+            Map<String, Integer> mutantTypeCounter = new HashMap<String, Integer>();
+            for (Mutant mutant : mutants)
+                mutantTypeCounter.put(mutant.getMutantType(), 0);
+
             for (Mutant mutant : mutants) {
                 mutant.writeToFolder("src/main/java/");
+
+                String type = mutant.getMutantType();
+                Integer cant = mutantTypeCounter.get(type);
+                mutantTypeCounter.put(type, cant + 1);
+
             }
+
+            System.out.println(mutantTypeCounter);
+
         } catch (Exception e) {
             System.out.println("Ocurrió una excepción en Main: " + e.getMessage());
             e.printStackTrace();

@@ -14,6 +14,7 @@ import java.util.Random;
  * Clase que representa un mutante generado.
  */
 public class Mutant {
+    private final String mutantType;
 
     /**
      * El nombre del paquete donde se guardan los mutantes.
@@ -33,8 +34,10 @@ public class Mutant {
     public Mutant(CtClass mutatedSpoonClass, String mutationDescription) {
         this.mutatedSpoonClass = mutatedSpoonClass;
         this.mutationDescription = mutationDescription;
+        this.mutantType = mutationDescription.split(":")[0];
     }
 
+    public String getMutantType(){return mutantType;}
     /**
      * Devuelve la descripción del mutante.
      */
@@ -70,7 +73,7 @@ public class Mutant {
         }
 
         // Creamos un nuevo nombre para la clase mutada.
-        String newSimpleClassName = mutatedSpoonClass.getSimpleName() + "Mutated" + new Random().nextInt(10000);
+        String newSimpleClassName = mutatedSpoonClass.getSimpleName() + mutantType + "Mutated" + new Random().nextInt(10000);
         String mutantFileName = newSimpleClassName + ".java";
         Path mutantFilePath = Paths.get(destFolder.toString(), mutantFileName);
 
