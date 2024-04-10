@@ -93,6 +93,15 @@ Luego,
 3. Ejecutar Pitest sobre el último test suite generado por Randoop. Responder: 
 
 	i. ¿Cuántos mutantes construye Pitest?¿Cuál es el mutation score?
+	Pitest construyó 51 mutantes. El mutation score es: 75%. De
+	
+
 	ii. Extender manualmente el test suite para obtener el mejor mutation score posible con Pitest. ¿Cuál es el mejor mutation score que pudo obtener? Si hubiera mutantes equivalentes, explique cuáles son y justifique por qué son equivalentes. 
+
+	Hay mutantes equivalentes. 
+
+	Por ejemplo, aquellos que se encargan de cambiar
+
+
 
 

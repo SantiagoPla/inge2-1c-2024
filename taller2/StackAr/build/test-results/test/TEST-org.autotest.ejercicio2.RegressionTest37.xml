@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.autotest.ejercicio2.RegressionTest37" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-04-05T14:34:13" hostname="MBP-de-Fabrizio.fibertel.com.ar" time="0.006">
+<testsuite name="org.autotest.ejercicio2.RegressionTest37" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-04-10T00:25:41" hostname="MBP-de-Fabrizio.fibertel.com.ar" time="0.008">
   <properties/>
   <testcase name="test1851()" classname="org.autotest.ejercicio2.RegressionTest37" time="0.001"/>
   <testcase name="test1852()" classname="org.autotest.ejercicio2.RegressionTest37" time="0.001"/>
-  <testcase name="test1853()" classname="org.autotest.ejercicio2.RegressionTest37" time="0.001"/>
-  <testcase name="test1854()" classname="org.autotest.ejercicio2.RegressionTest37" time="0.0"/>
+  <testcase name="test1853()" classname="org.autotest.ejercicio2.RegressionTest37" time="0.002"/>
+  <testcase name="test1854()" classname="org.autotest.ejercicio2.RegressionTest37" time="0.001"/>
   <testcase name="test1855()" classname="org.autotest.ejercicio2.RegressionTest37" time="0.001"/>
   <testcase name="test1856()" classname="org.autotest.ejercicio2.RegressionTest37" time="0.0"/>
   <testcase name="test1857()" classname="org.autotest.ejercicio2.RegressionTest37" time="0.0"/>
