@@ -49,3 +49,4 @@ d ¿Cuál es el instruction coverage promedio que lograron para las clases mutad
 e ¿Cuál es el peor instruction coverage que lograron para una clase mutada? ¿Por qué creen que sucede esto?
 	
 	4% para la clase StackArTrueConditionalsMutatorMutated7862. Esto se debe a que simplemente se pone en true la guarda de la capacidad del constructor, por lo que son pocas líneas las que llegan a ejecutarse antes de que falle.
+
