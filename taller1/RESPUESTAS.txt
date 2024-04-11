@@ -1,21 +1,26 @@
 Ejercicio 1.
 
 a ¿Cuántos mutantes se generaron en total?
-	Se generaron 70 mutantes en total.
+	Se generaron 72 mutantes en total.
 
 b ¿Qué operador de mutación generó más mutantes? ¿Cuántos y por qué?
-c ¿Qué operador de mutación generó menos mutantes? ¿Cuántos y por qué?
+	FalseConditionalsMutator y TrueConditionalsMutator son los operadores de mutación que generaron más mutantes. Cada uno generó diez mutantes. 
+	Esto se debe a la naturaleza del código, debido a la gran cantidad de condiciones que hay en el mismo por sobre otro tipo de operaciones. 
 
-	No logramos encontrar dónde ver las respuestas para b. y c., porque el cuadro de JaCoCo no parece diferenciar los mutantes.
+c ¿Qué operador de mutación generó menos mutantes? ¿Cuántos y por qué?
+	NullReturnsMutator es el operador que menos mutantes generó. De forma análoga a b., esto es porque en el código lo que menos aparece son returns de Objects. Como solo hay 2, se generan únicamente 2 mutantes.
+	
+
+	
 
 Ejercicio 2.
 
 a ¿Cuántos mutantes vivos y muertos encontraron cada uno de los test suites?
-	Test suite 1: 18 muertos, 52 vivos
-	Test suite 2: 35 muertos, 35 vivos
+	Test suite 1: 18 muertos, 54 vivos
+	Test suite 2: 35 muertos, 37 vivos
 b ¿Cuál es el mutation score de cada test suite?
 	Test suite 1: 25%
-	Test suite 2: 50%
+	Test suite 2: 48%
 
 
 Ejercicio 3
@@ -24,24 +29,23 @@ a ¿Cuál es el mutation score logrado para los tests de StackTests3?
 	Mutation score: 95%
 
 b ¿Cuántos mutantes vivos y muertos encontraron?
-	67 muertos y 3 vivos.
+	69 muertos y 3 vivos.
 
 c Comente cuáles son todos los mutantes vivos que quedaron y porqué son equivalentes al programa original (si no lo fueran, todavía es posible mejorar el mutation score).
-	1.  StackArMutated7281 (MathMutator: Se reemplazó * por / en la línea 65.)
+	1.  StackArMathMutatorMutated4435 (MathMutator: Se reemplazó * por / en la línea 65.)
 		Al calcular el hashCode se reemplaza un * por /, donde el valor que interfiere es un 1, y como es equivalente multiplicar y dividir por 1, no hay manera de distinguir este mutante.
 
-	2. StackArMutated7376 (FalseConditionalsMutator: Se reemplazó this == obj por false en la línea 72.)
+	2. StackArFalseConditionalsMutatorMutated4442 (FalseConditionalsMutator: Se reemplazó this == obj por false en la línea 72.)
 		Si bien se "esquiva" esta guarda poniendo el false, el resto de los ifs se encargan de chequear lo mismo que haría la línea 72.
 
-	3. StackArMutated3088 (FalseConditionalsMutator: Se reemplazó isEmpty() por false en la línea 45.)
+	3. StackArFalseConditionalsMutatorMutated114 (FalseConditionalsMutator: Se reemplazó isEmpty() por false en la línea 45.)
 		El isEmpty() que se evita en el pop es inmediatamente atrapado bajo la misma excepción en el top, por lo que los tests se comportan de la misma manera.
 
 
-d ¿Cuál es el instruction coverage promedio que lograron para las clases mutadas? Puede encontrar este valor al final del reporte de JaCoCo para el paquete org.autotest.mutants (la última fila da
-el Total).
+d ¿Cuál es el instruction coverage promedio que lograron para las clases mutadas? Puede encontrar este valor al final del reporte de JaCoCo para el paquete org.autotest.mutants (la última fila da el Total).
 
 	El promedio resultó ser del 76%
 
 e ¿Cuál es el peor instruction coverage que lograron para una clase mutada? ¿Por qué creen que sucede esto?
 	
-	4% para la clase StackArMutated6920. Esto se debe a que simplemente se pone en true la guarda de la capacidad del constructor, por lo que son pocas líneas las que llegan a ejecutarse antes de que falle.
+	4% para la clase StackArTrueConditionalsMutatorMutated7862. Esto se debe a que simplemente se pone en true la guarda de la capacidad del constructor, por lo que son pocas líneas las que llegan a ejecutarse antes de que falle.

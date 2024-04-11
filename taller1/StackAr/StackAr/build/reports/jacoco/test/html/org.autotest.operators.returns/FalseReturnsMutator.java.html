@@ -20,41 +20,40 @@ import java.util.List;
 <span class="nc" id="L20">            return false;</span>
         }
 
+<span class="nc" id="L23">        CtReturn op = (CtReturn)candidate;</span>
 
-<span class="nc" id="L24">        CtReturn op = (CtReturn)candidate;</span>
-
-<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (op.getReturnedExpression().equals(getFalseValueForReturnExpression(op)))</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        if (op.getReturnedExpression().equals(getFalseValueForReturnExpression(op)))</span>
             // Si ya es false, no lo procesa. Debería ser automático, pero no está funcionando.
-<span class="nc" id="L28">            return false;</span>
+<span class="nc" id="L27">            return false;</span>
 
-<span class="nc" id="L30">        String type = getReturnedExpressionType(op);</span>
-<span class="nc" id="L31">        List&lt;String&gt; targetTypes = Arrays.asList(</span>
+<span class="nc" id="L29">        String type = getReturnedExpressionType(op);</span>
+<span class="nc" id="L30">        List&lt;String&gt; targetTypes = Arrays.asList(</span>
                 &quot;boolean&quot;,
                 &quot;java.utils.Boolean&quot;
         );
-<span class="nc" id="L35">        return targetTypes.contains(type);</span>
+<span class="nc" id="L34">        return targetTypes.contains(type);</span>
     }
 
     @Override
     public void process(CtElement candidate) {
-<span class="nc" id="L40">        CtReturn op = (CtReturn)candidate;</span>
-<span class="nc" id="L41">        op.setReturnedExpression(getFalseValueForReturnExpression(op));</span>
-<span class="nc" id="L42">    }</span>
+<span class="nc" id="L39">        CtReturn op = (CtReturn)candidate;</span>
+<span class="nc" id="L40">        op.setReturnedExpression(getFalseValueForReturnExpression(op));</span>
+<span class="nc" id="L41">    }</span>
 
     private static String getReturnedExpressionType(CtReturn op) {
-<span class="nc" id="L45">        return op.getReturnedExpression().getType().toString();</span>
+<span class="nc" id="L44">        return op.getReturnedExpression().getType().toString();</span>
     }
 
     private CtExpression getFalseValueForReturnExpression(CtReturn op) {
-<span class="nc" id="L49">        return op.getFactory().Code().createLiteral(false);</span>
+<span class="nc" id="L48">        return op.getFactory().Code().createLiteral(false);</span>
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
-<span class="nc" id="L54">        CtReturn op = (CtReturn)candidate;</span>
-<span class="nc" id="L55">        return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
-<span class="nc" id="L56">                op.getReturnedExpression().toString() + &quot; por &quot; + getFalseValueForReturnExpression(op).toString() +</span>
-<span class="nc" id="L57">                &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
+<span class="nc" id="L53">        CtReturn op = (CtReturn)candidate;</span>
+<span class="nc" id="L54">        return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
+<span class="nc" id="L55">                op.getReturnedExpression().toString() + &quot; por &quot; + getFalseValueForReturnExpression(op).toString() +</span>
+<span class="nc" id="L56">                &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

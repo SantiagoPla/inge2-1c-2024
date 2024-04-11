@@ -21,35 +21,36 @@ import java.util.List;
         }
 
 <span class="nc" id="L23">        CtReturn op = (CtReturn)candidate;</span>
-<span class="nc" id="L24">        String type = getReturnedExpressionType(op);</span>
-<span class="nc" id="L25">        List&lt;String&gt; targetTypes = Arrays.asList(</span>
-                &quot;java.utils.Object&quot;
+
+<span class="nc" id="L25">        String type = getReturnedExpressionType(op);</span>
+<span class="nc" id="L26">        List&lt;String&gt; targetTypes = Arrays.asList(</span>
+                &quot;java.lang.Object&quot;
         );
-<span class="nc" id="L28">        return targetTypes.contains(type);</span>
+<span class="nc" id="L29">        return targetTypes.contains(type);</span>
     }
 
 
     @Override
     public void process(CtElement candidate) {
-<span class="nc" id="L34">        CtReturn op = (CtReturn)candidate;</span>
-<span class="nc" id="L35">        op.setReturnedExpression(getNullValueForReturnExpression(op));</span>
-<span class="nc" id="L36">    }</span>
+<span class="nc" id="L35">        CtReturn op = (CtReturn)candidate;</span>
+<span class="nc" id="L36">        op.setReturnedExpression(getNullValueForReturnExpression(op));</span>
+<span class="nc" id="L37">    }</span>
 
     private static String getReturnedExpressionType(CtReturn op) {
-<span class="nc" id="L39">        return op.getReturnedExpression().getType().toString();</span>
+<span class="nc" id="L40">        return op.getReturnedExpression().getType().toString();</span>
     }
 
     private CtExpression getNullValueForReturnExpression(CtReturn op) {
-<span class="nc" id="L43">        String returnType = getReturnedExpressionType(op);</span>
-<span class="nc" id="L44">        return op.getFactory().Code().createLiteral(null);</span>
+<span class="nc" id="L44">        String returnType = getReturnedExpressionType(op);</span>
+<span class="nc" id="L45">        return op.getFactory().Code().createLiteral(null);</span>
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
-<span class="nc" id="L49">        CtReturn op = (CtReturn)candidate;</span>
-<span class="nc" id="L50">        return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
-<span class="nc" id="L51">                op.getReturnedExpression().toString() + &quot; por &quot; + getNullValueForReturnExpression(op).toString() +</span>
-<span class="nc" id="L52">                &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
+<span class="nc" id="L50">        CtReturn op = (CtReturn)candidate;</span>
+<span class="nc" id="L51">        return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
+<span class="nc" id="L52">                op.getReturnedExpression().toString() + &quot; por &quot; + getNullValueForReturnExpression(op).toString() +</span>
+<span class="nc" id="L53">                &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -11,8 +11,8 @@ public class StackArMathMutatorMutated2729 extends org.autotest.Stack {
 <span class="fc" id="L11">    private int readIndex = -1;</span>
 
     public StackArMathMutatorMutated2729() {
-<span class="nc" id="L14">        this(org.autotest.mutants.StackArMathMutatorMutated2729.DEFAULT_CAPACITY);</span>
-<span class="nc" id="L15">    }</span>
+<span class="fc" id="L14">        this(org.autotest.mutants.StackArMathMutatorMutated2729.DEFAULT_CAPACITY);</span>
+<span class="fc" id="L15">    }</span>
 
 <span class="fc" id="L17">    public StackArMathMutatorMutated2729(int capacity) throws java.lang.IllegalArgumentException {</span>
 <span class="fc bfc" id="L18" title="All 2 branches covered.">        if (capacity &lt; 0) {</span>
@@ -60,27 +60,27 @@ public class StackArMathMutatorMutated2729 extends org.autotest.Stack {
 
     @java.lang.Override
     public int hashCode() {
-<span class="fc" id="L63">        final int prime = 31;</span>
-<span class="fc" id="L64">        int result = 1;</span>
-<span class="fc" id="L65">        result = (prime * result) + java.util.Arrays.hashCode(elems);</span>
-<span class="fc" id="L66">        result = (prime / result) + readIndex;</span>
-<span class="fc" id="L67">        return result;</span>
+<span class="nc" id="L63">        final int prime = 31;</span>
+<span class="nc" id="L64">        int result = 1;</span>
+<span class="nc" id="L65">        result = (prime * result) + java.util.Arrays.hashCode(elems);</span>
+<span class="nc" id="L66">        result = (prime / result) + readIndex;</span>
+<span class="nc" id="L67">        return result;</span>
     }
 
     @java.lang.Override
     public boolean equals(java.lang.Object obj) {
-<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if (this == obj) {</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if (this == obj) {</span>
 <span class="nc" id="L73">            return true;</span>
         }
-<span class="pc bpc" id="L75" title="1 of 2 branches missed.">        if (obj == null) {</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (obj == null) {</span>
 <span class="nc" id="L76">            return false;</span>
         }
-<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
 <span class="nc" id="L79">            return false;</span>
         }
-<span class="fc" id="L81">        org.autotest.mutants.StackArMathMutatorMutated2729 other = ((org.autotest.mutants.StackArMathMutatorMutated2729) (obj));</span>
-<span class="pc bpc" id="L82" title="1 of 2 branches missed.">        if (!java.util.Arrays.equals(elems, other.elems)) {</span>
-<span class="fc" id="L83">            return false;</span>
+<span class="nc" id="L81">        org.autotest.mutants.StackArMathMutatorMutated2729 other = ((org.autotest.mutants.StackArMathMutatorMutated2729) (obj));</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if (!java.util.Arrays.equals(elems, other.elems)) {</span>
+<span class="nc" id="L83">            return false;</span>
         }
 <span class="nc bnc" id="L85" title="All 2 branches missed.">        if (readIndex != other.readIndex) {</span>
 <span class="nc" id="L86">            return false;</span>

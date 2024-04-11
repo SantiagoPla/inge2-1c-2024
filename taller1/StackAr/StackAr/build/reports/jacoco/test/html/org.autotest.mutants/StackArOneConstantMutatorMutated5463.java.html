@@ -11,8 +11,8 @@ public class StackArOneConstantMutatorMutated5463 extends org.autotest.Stack {
 <span class="fc" id="L11">    private int readIndex = -1;</span>
 
     public StackArOneConstantMutatorMutated5463() {
-<span class="nc" id="L14">        this(org.autotest.mutants.StackArOneConstantMutatorMutated5463.DEFAULT_CAPACITY);</span>
-<span class="nc" id="L15">    }</span>
+<span class="fc" id="L14">        this(org.autotest.mutants.StackArOneConstantMutatorMutated5463.DEFAULT_CAPACITY);</span>
+<span class="fc" id="L15">    }</span>
 
 <span class="fc" id="L17">    public StackArOneConstantMutatorMutated5463(int capacity) throws java.lang.IllegalArgumentException {</span>
 <span class="fc bfc" id="L18" title="All 2 branches covered.">        if (capacity &lt; 1) {</span>
@@ -22,24 +22,24 @@ public class StackArOneConstantMutatorMutated5463 extends org.autotest.Stack {
 <span class="fc" id="L22">    }</span>
 
     public int size() {
-<span class="nc" id="L25">        return readIndex + 1;</span>
+<span class="fc" id="L25">        return readIndex + 1;</span>
     }
 
     public boolean isEmpty() {
-<span class="nc bnc" id="L29" title="All 2 branches missed.">        return size() == 0;</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">        return size() == 0;</span>
     }
 
     public boolean isFull() {
-<span class="nc bnc" id="L33" title="All 2 branches missed.">        return size() == elems.length;</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        return size() == elems.length;</span>
     }
 
     public void push(java.lang.Object o) throws java.lang.IllegalStateException {
-<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (isFull()) {</span>
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">        if (isFull()) {</span>
 <span class="nc" id="L38">            throw new java.lang.IllegalStateException();</span>
         }
-<span class="nc" id="L40">        this.readIndex++;</span>
-<span class="nc" id="L41">        this.elems[readIndex] = o;</span>
-<span class="nc" id="L42">    }</span>
+<span class="fc" id="L40">        this.readIndex++;</span>
+<span class="fc" id="L41">        this.elems[readIndex] = o;</span>
+<span class="fc" id="L42">    }</span>
 
     public java.lang.Object pop() throws java.lang.IllegalStateException {
 <span class="nc bnc" id="L45" title="All 2 branches missed.">        if (isEmpty()) {</span>

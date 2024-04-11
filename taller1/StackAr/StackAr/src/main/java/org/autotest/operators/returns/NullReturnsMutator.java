@@ -21,9 +21,10 @@ public class NullReturnsMutator extends MutationOperator {
         }
 
         CtReturn op = (CtReturn)candidate;
+
         String type = getReturnedExpressionType(op);
         List<String> targetTypes = Arrays.asList(
-                "java.utils.Object"
+                "java.lang.Object"
         );
         return targetTypes.contains(type);
     }

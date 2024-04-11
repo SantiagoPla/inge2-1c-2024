@@ -252,6 +252,14 @@ public class StackTests3 extends MutationAnalysisRunner {
         assertEquals(stack1.toString(), stack2.toString());
     }
 
+    public void testPopReturn() throws Exception {
+        Stack stack1 = createStack(2);
+        stack1.push(89);
+        int elem = (int)stack1.pop();
+
+        assertEquals(89, elem);
+    }
+
     public void testCantPopEmptyStack() throws Exception {
         assertThrows(IllegalStateException.class, () -> {
             Stack stack = createStack();

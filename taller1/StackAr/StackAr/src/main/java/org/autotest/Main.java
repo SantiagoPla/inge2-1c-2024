@@ -42,6 +42,7 @@ public class Main {
             }
 
             System.out.println(mutantTypeCounter);
+            System.out.println(mutantTypeCounter.values().stream().mapToInt(Integer::intValue).sum());
 
         } catch (Exception e) {
             System.out.println("Ocurrió una excepción en Main: " + e.getMessage());

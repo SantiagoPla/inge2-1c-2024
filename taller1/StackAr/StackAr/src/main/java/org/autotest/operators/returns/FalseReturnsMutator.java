@@ -20,7 +20,6 @@ public class FalseReturnsMutator extends MutationOperator {
             return false;
         }
 
-
         CtReturn op = (CtReturn)candidate;
 
         if (op.getReturnedExpression().equals(getFalseValueForReturnExpression(op)))
