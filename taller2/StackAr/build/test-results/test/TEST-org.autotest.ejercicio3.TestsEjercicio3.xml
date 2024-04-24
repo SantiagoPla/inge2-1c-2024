@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.autotest.ejercicio3.TestsEjercicio3" tests="32" skipped="0" failures="0" errors="0" timestamp="2024-04-10T00:25:43" hostname="MBP-de-Fabrizio.fibertel.com.ar" time="0.014">
+<testsuite name="org.autotest.ejercicio3.TestsEjercicio3" tests="34" skipped="0" failures="0" errors="0" timestamp="2024-04-11T20:52:32" hostname="MBP-de-Fabrizio.fibertel.com.ar" time="0.095">
   <properties/>
-  <testcase name="testIsFullMethod()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
-  <testcase name="testDifferentSizeDifferentHashCode()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
+  <testcase name="testIsFullMethod()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.032"/>
+  <testcase name="testDifferentSizeDifferentHashCode()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
   <testcase name="testEqualToItself()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
-  <testcase name="testNotEqualDifferentType()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
+  <testcase name="testNotEqualDifferentType()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
   <testcase name="testDifferentCapacityNotEqual()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
   <testcase name="testConstructorWithZeroCapacity()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
-  <testcase name="testDifferentCapacity()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
+  <testcase name="testDifferentCapacity()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
   <testcase name="testEqualsMethodEqual()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
-  <testcase name="testDifferentSize()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
-  <testcase name="testConstructorWithNegativeCapacity()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
+  <testcase name="testRepOkWithNonNullElementsWithMoreCapacity()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
+  <testcase name="testRepOkWithNullElementsWithMoreCapacity()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
+  <testcase name="testDifferentSize()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
+  <testcase name="testConstructorWithNegativeCapacity()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.006"/>
   <testcase name="testRepOkWithNullElement()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
   <testcase name="testDifferentElementsDifferentHashCode()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
-  <testcase name="testDifferentCapacityDifferentHashCode()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
-  <testcase name="testEqualsMethodNotEqual()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
-  <testcase name="testRepOkWithEmptyStack()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
+  <testcase name="testDifferentCapacityDifferentHashCode()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.003"/>
+  <testcase name="testEqualsMethodNotEqual()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.002"/>
+  <testcase name="testRepOkWithEmptyStack()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
   <testcase name="testSizeIncreasesByOne()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
   <testcase name="testCantTopEmptyStack()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
-  <testcase name="testNotEqualAfterPop()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
+  <testcase name="testNotEqualAfterPop()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
   <testcase name="testSizeDecreasesByOne()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
   <testcase name="testHashCode()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
   <testcase name="testNotEqualEmpty()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
-  <testcase name="testCantPopEmptyStack()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
-  <testcase name="testHashCodeAsExpected()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
-  <testcase name="testCantPushFullStack()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
+  <testcase name="testCantPopEmptyStack()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
+  <testcase name="testHashCodeAsExpected()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
+  <testcase name="testCantPushFullStack()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
   <testcase name="testIsEmptyMethod()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
-  <testcase name="testDifferentTopElement()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
+  <testcase name="testDifferentTopElement()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
   <testcase name="testConstructorWithSpecifiedCapacity()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
-  <testcase name="testToStringTwoStacks()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
+  <testcase name="testToStringTwoStacks()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
   <testcase name="testSameTopElement()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
-  <testcase name="testNotEqualNull()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
-  <testcase name="testToStringMethod()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
-  <testcase name="testDefaultConstructor()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.0"/>
+  <testcase name="testNotEqualNull()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
+  <testcase name="testToStringMethod()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.002"/>
+  <testcase name="testDefaultConstructor()" classname="org.autotest.ejercicio3.TestsEjercicio3" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
