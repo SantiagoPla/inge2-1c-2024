@@ -55,7 +55,10 @@ def evaluate_condition(condition_num, op, lhs, rhs):
         assert(type(lhs) is str) 
         assert(op == 'In')
         if (len(rhs.keys()) == 0):
-            return sys.maxsize
+            d_true = sys.maxsize
+            d_false = 0 
+            update_maps(condition_num, d_true, d_false)
+            return d_true == 0
         distance = lambda a, b : 0 if (abs(a - b) == 0) else abs(a - b)
         distances = [distance(ord(lhs), ord(k)) for k in rhs.keys()]
         d_true = min(distances)

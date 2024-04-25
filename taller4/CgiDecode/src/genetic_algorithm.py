@@ -27,8 +27,8 @@ class GeneticAlgorithm():
         
     def run(self):
         # Generar y evaluar la poblacion inicial
-        population = None # COMPLETAR
-        fitness_by_individual = None # COMPLETAR
+        population = create_population(self.population_size)
+        fitness_by_individual = get
 
         # Imprimir el mejor valor de fitness encontrado
         self.best_individual = None # COMPLETAR
