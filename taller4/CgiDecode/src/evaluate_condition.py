@@ -52,15 +52,21 @@ def has_reached_condition(condition_num):
 def evaluate_condition(condition_num, op, lhs, rhs):
     K = 1
     if (type(rhs) is dict):
-        assert(type(lhs) is chr) 
+        assert(type(lhs) is str) 
         assert(op == 'In')
         if (len(rhs.keys()) == 0):
-            return sys.maxint
+            return sys.maxsize
         distance = lambda a, b : 0 if (abs(a - b) == 0) else abs(a - b)
         distances = [distance(ord(lhs), ord(k)) for k in rhs.keys()]
         d_true = min(distances)
         d_false = 1 if (d_true == 0) else 0
-        
+        update_maps(condition_num, d_true, d_false)
+        return d_true == 0
+
+    if (type(lhs) is str and type(rhs) is str):
+        lhs = ord(lhs)
+        rhs = ord(rhs)
+
     if (op == 'Eq'):
         d_true = 0 if (abs(lhs - rhs) == 0) else abs(lhs - rhs)
         d_false = 0 if (abs(lhs - rhs) != 0) else K
