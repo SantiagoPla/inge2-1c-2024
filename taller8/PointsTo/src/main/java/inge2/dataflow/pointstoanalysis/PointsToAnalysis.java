@@ -65,8 +65,11 @@ public class PointsToAnalysis extends ForwardFlowAnalysis<Unit, PointsToGraph> {
      * @return
      */
     public boolean mayAlias(String leftVariableName, String rightVariableName) {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        Set<String>  intersection = new HashSet<String>(lastPointsToGraph.getNodesForVariable(leftVariableName));
+        intersection.retainAll(lastPointsToGraph.getNodesForVariable(rightVariableName));
+
+        return !intersection.isEmpty();
+
     }
 
     /**
@@ -77,7 +80,9 @@ public class PointsToAnalysis extends ForwardFlowAnalysis<Unit, PointsToGraph> {
      * @return
      */
     public boolean mayAlias(String leftVariableName, String fieldName, String rightVariableName) {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        Set<String>  intersection = new HashSet<String>(lastPointsToGraph.getReachableNodesByFieldFromVariable(leftVariableName, fieldName));
+        intersection.retainAll(lastPointsToGraph.getNodesForVariable(rightVariableName));
+
+        return !intersection.isEmpty();
     }
 }

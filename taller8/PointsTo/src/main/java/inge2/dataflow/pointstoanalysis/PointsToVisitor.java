@@ -4,6 +4,9 @@ import soot.jimple.*;
 import soot.jimple.internal.JInstanceFieldRef;
 import soot.jimple.internal.JimpleLocal;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class PointsToVisitor extends AbstractStmtSwitch<Void> {
 
     private final PointsToGraph pointsToGraph;
@@ -37,35 +40,43 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
         String leftVariableName = stmt.getLeftOp().toString();
         String nodeName = pointsToGraph.getNodeName(stmt);
 
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        Set<String> nodesToAssignTo = new HashSet<String>();
+        nodesToAssignTo.add(nodeName);
+
+        pointsToGraph.setNodesForVariable(leftVariableName, nodesToAssignTo);
     }
 
     private void processAssignLocalToLocal(AssignStmt stmt) {
         String leftVariableName = stmt.getLeftOp().toString();
         String rightVariableName = stmt.getRightOp().toString();
 
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        pointsToGraph.setNodesForVariable(leftVariableName, pointsToGraph.getNodesForVariable(rightVariableName));
     }
 
-    private void processAssignLocalToField(AssignStmt stmt) {
+    private void processAssignLocalToField(AssignStmt stmt) { //x.f = y
+        //ir a los nodos a los que mapea x, y agregarle c/uno axis por f, hacia todos los nodos que mapea y.
         JInstanceFieldRef leftFieldRef = (JInstanceFieldRef) stmt.getLeftOp();
         String leftVariableName = leftFieldRef.getBase().toString();
         String fieldName = leftFieldRef.getField().getName();
         String rightVariableName = stmt.getRightOp().toString();
 
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        for (String nodeX : pointsToGraph.getNodesForVariable(leftVariableName)){
+            for (String nodeY : pointsToGraph.getNodesForVariable(rightVariableName))
+                pointsToGraph.addEdge(nodeX, fieldName, nodeY);
+        }
     }
 
-    private void processAssignFieldToLocal(AssignStmt stmt) {
+    private void processAssignFieldToLocal(AssignStmt stmt) { //x = y.f
         String leftVariableName = stmt.getLeftOp().toString();
         JInstanceFieldRef rightFieldRef = (JInstanceFieldRef) stmt.getRightOp();
         String rightVariableName = rightFieldRef.getBase().toString();
         String fieldName = rightFieldRef.getField().getName();
 
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        Set<String> nodesForLeftVarName = new HashSet<String>();
+        for (String nodeY : pointsToGraph.getNodesForVariable(rightVariableName)){
+            Set<String> reachableNodesFromRightVar = pointsToGraph.getReachableNodesByField(nodeY, fieldName);
+            nodesForLeftVarName.addAll(reachableNodesFromRightVar);
+        }
+        pointsToGraph.setNodesForVariable(leftVariableName, nodesForLeftVarName);
     }
 }

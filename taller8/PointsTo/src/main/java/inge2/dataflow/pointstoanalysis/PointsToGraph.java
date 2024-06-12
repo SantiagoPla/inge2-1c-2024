@@ -58,8 +58,7 @@ public class PointsToGraph {
      * @return
      */
     public Set<String> getNodesForVariable(String variableName) {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        return mapping.get(variableName);
     }
 
     /**
@@ -68,8 +67,8 @@ public class PointsToGraph {
      * @param nodes
      */
     public void setNodesForVariable(String variableName, Set<String> nodes) {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        this.nodes.addAll(nodes);
+        mapping.put(variableName, nodes);
     }
 
     /**
@@ -79,8 +78,7 @@ public class PointsToGraph {
      * @param rightNode
      */
     public void addEdge(String leftNode, String fieldName, String rightNode) {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        axis.add(new Axis(leftNode, fieldName, rightNode));
     }
 
     /**
@@ -90,9 +88,22 @@ public class PointsToGraph {
      * @return
      */
     public Set<String> getReachableNodesByField(String node, String fieldName) {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        Set<String> reachableNodesByField = new HashSet<String>();
+        for (Axis a : axis)
+            if (Objects.equals(a.fieldName, fieldName) && Objects.equals(a.leftNode, node))
+                reachableNodesByField.add(a.rightNode);
+        return reachableNodesByField;
     }
+
+    public Set<String> getReachableNodesByFieldFromVariable(String variableName, String fieldName){
+        Set<String> mappingNodes = getNodesForVariable(variableName);
+        Set<String> result = new HashSet<String>();
+        for (String node : mappingNodes)
+            result.addAll(getReachableNodesByField(node, fieldName));
+        return result;
+    }
+
+
 
     /**
      * Copia de un grafo (modifica el this).
@@ -109,8 +120,17 @@ public class PointsToGraph {
      * @param in el grafo a unir
      */
     public void union(PointsToGraph in) {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        nodes.addAll(in.nodes);
+        axis.addAll(in.axis);
+        Set<String> inKeys = in.mapping.keySet();
+        for (String k : inKeys){
+            Set<String> kInValue = in.mapping.get(k);
+            if (!(mapping.containsKey(k)))
+                mapping.put(k, kInValue);
+            else
+                //OJO REFERENCIA ! ! !
+                mapping.get(k).addAll(kInValue);
+        }
     }
 
     /**
@@ -118,7 +138,6 @@ public class PointsToGraph {
      * @param dst el grafo destino.
      */
     private void putAll(PointsToGraph dst) {
-        // TODO: IMPLEMENTAR
-        throw new UnsupportedOperationException("Not implemented yet");
+        dst.union(this);        //ES ESTO O PISAR EL CONTENIDO DE dst ? ? ?
     }
 }
