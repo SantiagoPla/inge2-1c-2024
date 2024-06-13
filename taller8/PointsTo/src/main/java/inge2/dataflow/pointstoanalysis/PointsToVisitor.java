@@ -37,6 +37,8 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
     }
 
     private void processAssignToNewObject(AssignStmt stmt) {
+        //al asignar una variable a un objeto nuevo, tenemos que agregar el nodo al grafo de ser necesario, y mapear la variable a dicho nodo.
+        //eso lo podemos hacer con el método setNodesForVariable.
         String leftVariableName = stmt.getLeftOp().toString();
         String nodeName = pointsToGraph.getNodeName(stmt);
 
@@ -47,6 +49,7 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
     }
 
     private void processAssignLocalToLocal(AssignStmt stmt) {
+        //al asignar una variable local a otra, debemos mapear a la variable de la izquierda todos los nodos a los que mapea la variable de la derecha.
         String leftVariableName = stmt.getLeftOp().toString();
         String rightVariableName = stmt.getRightOp().toString();
 
@@ -54,7 +57,10 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
     }
 
     private void processAssignLocalToField(AssignStmt stmt) { //x.f = y
-        //ir a los nodos a los que mapea x, y agregarle c/uno axis por f, hacia todos los nodos que mapea y.
+        //al asignar una variable local a un campo, debemos ir a cada nodo a los que mapea la variable de la izquierda (x), y asegurar que por medio de f vayan
+        // a cada uno de los nodos a los que mapea la variable de la derecha (y).
+
+        //para ello usamos addEdge, que permite agregar un eje con field fieldName desde cada nodo a los que mapea x y hacia cada nodo a los que mapea y.
         JInstanceFieldRef leftFieldRef = (JInstanceFieldRef) stmt.getLeftOp();
         String leftVariableName = leftFieldRef.getBase().toString();
         String fieldName = leftFieldRef.getField().getName();
@@ -67,6 +73,9 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
     }
 
     private void processAssignFieldToLocal(AssignStmt stmt) { //x = y.f
+        //acá tenemos que mapear a x todos los nodos a los que podemos llegar por f, desde cada nodo a los que mapea y.
+
+        //recorremos los nodos a los que mapea y, obtenemos aquellos a los que podemos ir por f, y la unión de todos esos es a donde mapeará x.
         String leftVariableName = stmt.getLeftOp().toString();
         JInstanceFieldRef rightFieldRef = (JInstanceFieldRef) stmt.getRightOp();
         String rightVariableName = rightFieldRef.getBase().toString();

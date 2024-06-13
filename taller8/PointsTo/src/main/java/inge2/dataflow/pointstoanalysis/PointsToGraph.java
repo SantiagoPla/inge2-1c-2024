@@ -58,6 +58,7 @@ public class PointsToGraph {
      * @return
      */
     public Set<String> getNodesForVariable(String variableName) {
+        //mapping representa la funcion que asocia variables a nodos. Lo usamos para encontrar el nodo correspondiente.
         return mapping.get(variableName);
     }
 
@@ -67,7 +68,9 @@ public class PointsToGraph {
      * @param nodes
      */
     public void setNodesForVariable(String variableName, Set<String> nodes) {
+        //agregamos los nodos pasados por parámetros a los nodos del grafo, por si no llegasen a estar.
         this.nodes.addAll(nodes);
+        //le asociamos los nodos pasados por parámetro a la variable, mediante mapping.
         mapping.put(variableName, nodes);
     }
 
@@ -78,6 +81,7 @@ public class PointsToGraph {
      * @param rightNode
      */
     public void addEdge(String leftNode, String fieldName, String rightNode) {
+        //agregamos el eje nuevo a axis.
         axis.add(new Axis(leftNode, fieldName, rightNode));
     }
 
@@ -88,6 +92,7 @@ public class PointsToGraph {
      * @return
      */
     public Set<String> getReachableNodesByField(String node, String fieldName) {
+        //recorremos los ejes, quedándonos con el nodo derecho de aquellos tal que el nodo izquierdo y el fieldName coinciden con los pasados por parámetro.
         Set<String> reachableNodesByField = new HashSet<String>();
         for (Axis a : axis)
             if (Objects.equals(a.fieldName, fieldName) && Objects.equals(a.leftNode, node))
@@ -95,7 +100,14 @@ public class PointsToGraph {
         return reachableNodesByField;
     }
 
+    /**
+     * Devuelve el conjunto de nodos alcanzables desde los nodos asociados variableName por el campo <code>fieldName</code>.
+     * @param variableName
+     * @param fieldName
+     * @return
+     */
     public Set<String> getReachableNodesByFieldFromVariable(String variableName, String fieldName){
+        // recorremos los nodos a los que se mapea la variable, y por cada uno agregamos los nodos a los que podemos llegar con el fieldName.
         Set<String> mappingNodes = getNodesForVariable(variableName);
         Set<String> result = new HashSet<String>();
         for (String node : mappingNodes)
@@ -120,15 +132,18 @@ public class PointsToGraph {
      * @param in el grafo a unir
      */
     public void union(PointsToGraph in) {
+        // unimos los nodos y los axis.
         nodes.addAll(in.nodes);
         axis.addAll(in.axis);
+
+        //para los mappings, tenemos que agregar los mapeos de variables nuevas, y unir aquellos que ya están en el grafo.
         Set<String> inKeys = in.mapping.keySet();
         for (String k : inKeys){
             Set<String> kInValue = in.mapping.get(k);
             if (!(mapping.containsKey(k)))
                 mapping.put(k, kInValue);
             else
-                //OJO REFERENCIA ! ! !
+                //referencia
                 mapping.get(k).addAll(kInValue);
         }
     }
@@ -138,6 +153,7 @@ public class PointsToGraph {
      * @param dst el grafo destino.
      */
     private void putAll(PointsToGraph dst) {
-        dst.union(this);        //ES ESTO O PISAR EL CONTENIDO DE dst ? ? ?
+        //para agregar tooda la info de este grafo a dst simplemente hacemos la unión, pero partiendo de dst.
+        dst.union(this);
     }
 }

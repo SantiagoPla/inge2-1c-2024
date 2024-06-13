@@ -65,6 +65,8 @@ public class PointsToAnalysis extends ForwardFlowAnalysis<Unit, PointsToGraph> {
      * @return
      */
     public boolean mayAlias(String leftVariableName, String rightVariableName) {
+        //para ver si las dos variables apuntan a algun mismo objeto, simplemente obtenemos los nodos a los que llegamos por cada uno y vemos si la
+        //intersección de esos conjuntos es nula o no.
         Set<String>  intersection = new HashSet<String>(lastPointsToGraph.getNodesForVariable(leftVariableName));
         intersection.retainAll(lastPointsToGraph.getNodesForVariable(rightVariableName));
 
@@ -80,6 +82,9 @@ public class PointsToAnalysis extends ForwardFlowAnalysis<Unit, PointsToGraph> {
      * @return
      */
     public boolean mayAlias(String leftVariableName, String fieldName, String rightVariableName) {
+        //para ver si x e y apuntan por f a algún mismo objeto, obtenemos todos los nodos a los que podemos llegar desde la variable x por medio de f.
+        //esto es, todos los nodos a los que podemos ir con la variable, y de allí ver todos los nodos a los que llegamos por f.
+        //si la intersección no es nula, hay alias.
         Set<String>  intersection = new HashSet<String>(lastPointsToGraph.getReachableNodesByFieldFromVariable(leftVariableName, fieldName));
         intersection.retainAll(lastPointsToGraph.getNodesForVariable(rightVariableName));
 
